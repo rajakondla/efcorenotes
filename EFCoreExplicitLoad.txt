@@ -1,0 +1,3 @@
+var user = _userManager.ProfileContext.Users.FirstOrDefault();
+
+_userManager.ProfileContext.Entry(user).Collection(u => u.UserRoles).Query().Where(ur => ur.RoleId == 1).Load();

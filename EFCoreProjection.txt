@@ -1,0 +1,25 @@
+Loading related data with Projection
+  
+  var user =  _userManager.ProfileContext.Users.Select(x=> new { x.Id, RoleIds=x.UserRoles }).ToList();
+  
+  No N+1 problem and UserRoles loaded and tracing is done
+--------------------------------------------------------------------------------------------------------------------
+ 
+ var user =  _userManager.ProfileContext.Users.Select(x=> new { x.Id, RoleIds=x.UserRoles.Select(r=>r) }).ToList();
+ 
+ No User data loaded when ToList() is done.
+ 
+ When we do 
+            foreach (var getUser in user)
+            {
+                var getData = getUser.RoleIds.ToList();
+             
+            }
+			
+N+1 problem
+
+-----------------------------------------------------------------------------------------------------------------------
+  
+   var user =  _userManager.ProfileContext.Users.Select(x=> new { x.Id, RoleIds=x.UserRoles.Select(r=>r).ToList() });
+   
+   No N+1 problem when doing foreach. But for UserRoles there is no tracing by EF

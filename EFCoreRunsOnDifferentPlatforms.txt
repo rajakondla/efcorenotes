@@ -1,0 +1,25 @@
+EF Core run on top of dotnet core and dotnet core runs on core CLR
+
+dotnet core runs in 
+
+1) OS
+Windows, MAC, Linux
+
+2) 
+
+a) Full dotnet Framworks & Apps
+
+Full dotnet framework that is above 4.5.1+, and apps that run on Full dotnet framwork like console, winforms, WPF, ASP.NET 4
+
+b) CoreCLR and Apps
+
+AspNet core web apps, APIs, libraries, services, console apps
+
+c) UWP (Universal Windows Platform) on Windows 10
+
+Apps: Mobile, PC, HoloLens, XBox, IoT, Surface Hub
+
+
+If we are targeting cross platform we have to use EF core
+
+But if we fix that the application will stay on windows, then we can use Aspnet core with EF 6. Create EF 6 in class library, and call that library from AspNet core app.
